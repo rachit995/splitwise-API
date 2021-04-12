@@ -17,6 +17,7 @@ You can test the live API [here](https://documenter.getpostman.com/view/4935333/
 ```
 .
 ├── Procfile
+├── README.md
 ├── app.py
 ├── application
 │   ├── __init__.py
@@ -25,6 +26,8 @@ You can test the live API [here](https://documenter.getpostman.com/view/4935333/
 │   ├── controllers
 │   │   ├── expense.py
 │   │   ├── group.py
+│   │   ├── simplify.py
+│   │   ├── transaction.py
 │   │   └── user.py
 │   └── models
 │       ├── expense.py
