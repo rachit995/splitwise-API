@@ -2,6 +2,7 @@ from application.controllers.user import user_bp
 from application.controllers.group import group_bp
 from application.controllers.expense import expense_bp
 from application.controllers.transaction import transaction_bp
+from application.controllers.simplify import simplify_bp
 from application.config import DevelopmentConfig
 from flask import Flask, jsonify
 import logging
@@ -37,3 +38,4 @@ def register_blueprint(app):
     app.register_blueprint(group_bp)
     app.register_blueprint(expense_bp)
     app.register_blueprint(transaction_bp)
+    app.register_blueprint(simplify_bp)
