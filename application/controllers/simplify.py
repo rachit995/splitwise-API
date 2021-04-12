@@ -77,7 +77,6 @@ def get_all_simplified_debts(group_id):
 @ simplify_bp.route('/<string:group_id>/<string:user_id>', methods=['GET'])
 def get_user_simplified_debts(group_id, user_id):
     try:
-        user = User.objects(id__exact=user_id).first()
         all_transactions = Transaction.objects().all()
         sd = get_simplified_trans(
             transactions=all_transactions, user_id=user_id)
