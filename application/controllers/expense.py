@@ -89,7 +89,6 @@ def create_expense():
             trans.save()
         return jsonify(
             isError=False,
-            statusCode=200,
             data=result
         ), 200
     except Exception:
@@ -107,7 +106,6 @@ def list_expenses():
             map(lambda x: x.deserialize(), Expense.objects.all()))
         return jsonify(
             isError=False,
-            statusCode=200,
             data=all_groups
         ), 200
     except Exception:
@@ -124,7 +122,6 @@ def get_expense(expense_id):
         expense = Expense.objects(id__exact=expense_id).first()
         return jsonify(
             isError=False,
-            statusCode=200,
             data=expense.deserialize()
         ), 200
     except Exception:

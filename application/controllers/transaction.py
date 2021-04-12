@@ -20,7 +20,6 @@ def list_transaction():
             map(lambda x: x.deserialize(), Transaction.objects.all()))
         return jsonify(
             isError=False,
-            statusCode=200,
             data=all_transactions
         ), 200
     except Exception:
@@ -37,7 +36,6 @@ def get_transaction(transaction_id):
         transaction = Transaction.objects(id__exact=transaction_id).first()
         return jsonify(
             isError=False,
-            statusCode=200,
             data=transaction.deserialize()
         ), 200
     except Exception:

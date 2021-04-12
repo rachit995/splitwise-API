@@ -39,7 +39,6 @@ def create_group():
             user_group.save()
         return jsonify(
             isError=False,
-            statusCode=200,
             data=group.deserialize()
         ), 200
     except Exception:
@@ -56,7 +55,6 @@ def list_group():
         all_groups = list(map(lambda x: x.deserialize(), Group.objects.all()))
         return jsonify(
             isError=False,
-            statusCode=200,
             data=all_groups
         ), 200
     except Exception:
@@ -73,7 +71,6 @@ def get_group(group_id):
         group = Group.objects(id__exact=group_id).first()
         return jsonify(
             isError=False,
-            statusCode=200,
             data=group.deserialize()
         ), 200
     except Exception:

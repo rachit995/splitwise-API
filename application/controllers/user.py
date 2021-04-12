@@ -27,7 +27,6 @@ def create_user():
         user.save()
         return jsonify(
             isError=False,
-            statusCode=200,
             data=user.deserialize()
         ), 200
     except Exception:
@@ -44,7 +43,6 @@ def list_user():
         all_users = list(map(lambda x: x.deserialize(), User.objects.all()))
         return jsonify(
             isError=False,
-            statusCode=200,
             data=all_users
         ), 200
     except Exception:
@@ -61,7 +59,6 @@ def get_user(user_id):
         user = User.objects(id__exact=user_id)[0]
         return jsonify(
             isError=False,
-            statusCode=200,
             data=user.deserialize()
         ), 200
     except Exception:
