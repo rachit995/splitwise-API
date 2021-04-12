@@ -102,11 +102,30 @@ def create_expense():
 @expense_bp.route('/', methods=['GET'])
 def list_expenses():
     try:
-        all_groups = list(
+        all_expenses = list(
             map(lambda x: x.deserialize(), Expense.objects.all()))
         return jsonify(
             isError=False,
-            data=all_groups
+            data=all_expenses
+        ), 200
+    except Exception:
+        err = traceback.format_exc()
+        return jsonify(
+            isError=True,
+            data=err
+        ), 500
+
+
+@expense_bp.route('/group/<string:group_id>', methods=['GET'])
+def get_group_expense(group_id):
+    try:
+        group = Group.objects(id__exact=group_id).first()
+        all_expenses = Expense.objects(group=group).all()
+        all_expenses = list(
+            map(lambda x: x.deserialize(), all_expenses))
+        return jsonify(
+            isError=False,
+            data=all_expenses
         ), 200
     except Exception:
         err = traceback.format_exc()
