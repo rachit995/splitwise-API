@@ -22,6 +22,6 @@ class Transaction(Document):
         return {
             "id": str(self.id),
             "amount": self.amount,
-            "payee": self.payee.deserialize,
-            "payer": self.payer.deserialize,
+            "payee": self.payee.deserialize(),
+            "payer": self.payer.deserialize(),
         }

@@ -3,6 +3,7 @@ from mongoengine import connect, Document, StringField, ReferenceField, DateTime
 from mongoengine.fields import DictField, IntField
 from application.config import DevelopmentConfig
 from application.models.group import Group
+import json
 
 config = DevelopmentConfig()
 
@@ -20,7 +21,9 @@ class Expense(Document):
     def deserialize(self):
         return {
             "id": str(self.id),
-            "title": self.name,
+            "title": self.title,
+            "spender": json.loads(self.spender),
+            "splits": json.loads(self.splits),
             "amount": self.amount,
-            "group": self.group.deserialize,
+            "group": self.group.deserialize(),
         }

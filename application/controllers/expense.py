@@ -101,7 +101,7 @@ def create_expense():
 
 
 @expense_bp.route('/', methods=['GET'])
-def list_group():
+def list_expenses():
     try:
         all_groups = list(
             map(lambda x: x.deserialize(), Expense.objects.all()))
@@ -118,10 +118,10 @@ def list_group():
         ), 500
 
 
-@expense_bp.route('/<string:group_id>', methods=['GET'])
-def get_group(group_id):
+@expense_bp.route('/<string:expense_id>', methods=['GET'])
+def get_expense(expense_id):
     try:
-        expense = Expense.objects(id__exact=group_id).first()
+        expense = Expense.objects(id__exact=expense_id).first()
         return jsonify(
             isError=False,
             statusCode=200,
