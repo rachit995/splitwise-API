@@ -2,7 +2,7 @@ from application.controllers.user import user_bp
 from application.controllers.group import group_bp
 from application.controllers.expense import expense_bp
 from application.config import DevelopmentConfig
-from flask import Flask
+from flask import Flask, jsonify
 import logging
 import sys
 import os
@@ -21,6 +21,13 @@ def create_app():
         app.logger.addHandler(logging.StreamHandler())
         app.logger.setLevel(logging.ERROR)
     register_blueprint(app)
+
+    @app.route('/')
+    def index():
+        return jsonify(
+            status=True,
+            message='Welcome to Splitwise API (@rachit995)!'
+        )
     return app
 
 
